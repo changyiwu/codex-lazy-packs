@@ -112,3 +112,9 @@ npx skills add mathruffian-dot/codex-lazy-packs --skill codex-env-setup --full-d
 ## 授權
 
 MIT License，與 Claude Code 懶人包相同。
+
+---
+
+## 相關技能 repo
+
+- [agent-speak-skill](https://github.com/mathruffian-dot/agent-speak-skill) — 讓 AI Agent「用語音回答你」：免費 Edge-TTS 串流語音回覆，零金鑰、首聲約 1–2 秒、無視窗（Claude Code／Codex／OpenCode／AntiGravity 通用）
