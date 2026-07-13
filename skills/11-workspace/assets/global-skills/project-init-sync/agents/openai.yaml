@@ -1,0 +1,4 @@
+interface:
+  display_name: "專案初始化同步"
+  short_description: "安全建立或補齊專案工作區、Git 與 Obsidian 駕駛艙"
+  default_prompt: "使用 $project-init-sync 初始化專案工作區與同步流程。"

@@ -79,10 +79,22 @@ Codex 內建生圖預設會存在：
 C:\Users\<你>\.codex\generated_images\
 ```
 
+實際檔案通常還會多一層工作識別碼，例如：
+
+```text
+C:\Users\<你>\.codex\generated_images\<工作識別碼>\<圖片檔名>.png
+```
+
+生圖工具完成時會顯示完整路徑。如果介面只顯示圖片、沒有看到路徑，可以再問：
+
+```text
+剛才圖片的完整絕對路徑是什麼？請用純文字顯示。
+```
+
 如果圖片要放進專案或 Obsidian，請直接跟 Codex 說：
 
 ```text
-把剛剛生成的圖片複製到目前專案的 assets/images，檔名改成 math-game-cover.png。
+把剛剛生成的圖片複製到目前專案的 assets/images，檔名改成 math-game-cover.png，並回報完整絕對路徑。
 ```
 
 或：
