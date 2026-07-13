@@ -170,7 +170,7 @@ macOS / Linux：
 若任務涉及筆記、教學素材、專案駕駛艙、工作流程、索引整理，請優先參考：
 
 - `<VAULT_PATH>\AGENTS.md`
-- `<VAULT_PATH>\第二大腦\專案工作流程.md`
+- `<VAULT_PATH>\<專案名稱>-專案駕駛艙.md`
 - `<VAULT_PATH>\第二大腦\邏輯專案模型 SOP.md`
 
 可協助讀取、整理、建立、修改 `.md` 筆記；但實際寫入權限以 Codex App 當次工作區授權與 MCP 設定為準。
@@ -246,7 +246,7 @@ npm.cmd --version
 如果沒有 Node.js，Windows 可用：
 
 ```powershell
-winget install --id OpenJS.NodeJS
+winget install --id OpenJS.NodeJS.LTS --exact
 ```
 
 安裝後重開終端機，再檢查一次。

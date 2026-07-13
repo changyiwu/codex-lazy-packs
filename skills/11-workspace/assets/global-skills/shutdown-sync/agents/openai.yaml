@@ -1,0 +1,4 @@
+interface:
+  display_name: "收工同步"
+  short_description: "檢查變更與敏感資料，安全整理專案內容並準備清楚的工作交接"
+  default_prompt: "使用 $shutdown-sync 安全整理本次工作，更新進度並準備交接。"

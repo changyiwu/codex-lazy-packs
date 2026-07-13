@@ -1,0 +1,4 @@
+interface:
+  display_name: "專案工作模式"
+  short_description: "安裝開工、收工與專案初始化三個安全工作 Skill"
+  default_prompt: "使用 $codex-workspace 安裝或執行 Codex 專案工作模式。"
