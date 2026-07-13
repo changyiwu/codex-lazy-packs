@@ -24,7 +24,7 @@ uv --version
 codex --version
 ```
 
-Node.js 需 18 以上，建議使用目前 LTS。缺少選用的 Codex CLI 不算 Desktop 環境失敗。
+Node.js 必須使用仍受官方支援的 LTS；不要只用主版本大於 18 判斷，因為舊版本可能已停止支援。缺少選用的 Codex CLI 不算 Desktop 環境失敗。
 
 ## 步驟二：只補裝缺少項目
 
@@ -63,7 +63,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 至少確認：
 
 - Codex Desktop app 能開啟並正常對話，或使用者選用的 IDE／CLI 可運作。
-- `node --version` 為 18 以上。
+- `node --version` 屬於仍受官方支援的 LTS。
 - `uv --version` 有正常版本輸出。
 - 只有選用 CLI 時，才要求 `codex --version` 成功。
 - 全程沒有要求 GitHub 帳號或 GitHub 登入。

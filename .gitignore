@@ -1,17 +1,34 @@
 # Google Drive 系統檔
 desktop.ini
+Thumbs.db
+.DS_Store
 *.tmp
 ~$*
 
 # 敏感資料
 .env
+.env.*
+!.env.example
 *.key
+*.pem
 credentials.*
+secrets.*
 
 # AI agent 本地設定（含 permissions、可能記錄 token）
 .claude/
 .codex/
+.agents/
 
 # Node.js
 node_modules/
 package-lock.json
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# 建置與測試輸出
+dist/
+build/
+coverage/
