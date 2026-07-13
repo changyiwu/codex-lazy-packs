@@ -3,7 +3,7 @@
 ## 這個資料夾是什麼
 
 這是公開發布到 GitHub 的 **Codex 懶人包**倉庫，對應 repo：
-**mathruffian-dot/codex-lazy-packs**
+**changyiwu/codex-lazy-packs**
 
 本資料夾與 `Codex-lazy-packs/` 是**平行版本**：同樣的教學流程，分別給 Codex 與 OpenAI Codex（**Desktop / IDE / CLI 三者通用**）使用。
 
@@ -14,7 +14,7 @@
 - 教學章節：根目錄的編號 Markdown 檔案
 - 可安裝技能：`skills/`
 - 發布前驗證：`scripts/validate-lazy-pack.ps1`
-- GitHub：<https://github.com/mathruffian-dot/codex-lazy-packs>
+- GitHub：<https://github.com/changyiwu/codex-lazy-packs>
 - 部署：目前不在初始化流程中啟用 GitHub Pages 或其他部署
 
 ## 主要敘事視角
