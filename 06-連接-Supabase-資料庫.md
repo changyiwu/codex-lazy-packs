@@ -1,4 +1,4 @@
-# Codex 懶人包 #04：連接 Supabase 資料庫
+# Codex 懶人包 #06：連接 Supabase 資料庫
 
 > 版本：v0.1（Codex 版）
 > 更新日期：2026-04-26

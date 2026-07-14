@@ -1,4 +1,4 @@
-# Codex 懶人包 #06：設定 Gemini 免費 API
+# Codex 懶人包 #09：設定 Gemini 免費 API
 
 > 版本：v0.1（Codex 版）
 > 更新日期：2026-04-26
@@ -134,4 +134,4 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:g
 
 - [Google AI Studio](https://aistudio.google.com)
 - [Gemini API 文件](https://ai.google.dev/docs)
-- [05 安裝本地 AI Ollama](05-安裝本地AI-Ollama.md)
+- [08 安裝本地 AI Ollama](08-安裝本地AI-Ollama.md)

@@ -1,4 +1,4 @@
-# Codex 懶人包 #09：用 chezmoi 同步 Codex 設定與收工技能
+# Codex 懶人包 #12：用 chezmoi 同步 Codex 設定與收工技能
 
 > 版本：v0.1（Codex 版）
 > 更新日期：2026-04-26
