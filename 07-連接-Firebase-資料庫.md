@@ -1,4 +1,4 @@
-# Codex 懶人包 #04.5：連接 Firebase 資料庫
+# Codex 懶人包 #07：連接 Firebase 資料庫
 
 > 版本：v0.3（Codex 版，已在 Codex Desktop 實測）
 > 更新日期：2026-05-01

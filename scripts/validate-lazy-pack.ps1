@@ -97,15 +97,15 @@ foreach ($SkillFile in $SkillFiles) {
     }
 }
 
-if ($SkillFiles.Count -ne 18) {
-    Add-Failure "可安裝 Skill 數量應為 18，實際為 $($SkillFiles.Count)"
+if ($SkillFiles.Count -ne 17) {
+    Add-Failure "可安裝 Skill 數量應為 17，實際為 $($SkillFiles.Count)"
 }
 
 foreach ($DuplicateName in ($SkillNames | Group-Object | Where-Object Count -gt 1)) {
     Add-Failure "Skill name 重複：$($DuplicateName.Name)"
 }
 
-$WorkspaceAssetRoot = Join-Path $Root 'skills/11-workspace/assets/global-skills'
+$WorkspaceAssetRoot = Join-Path $Root 'skills/10-workspace/assets/global-skills'
 foreach ($Name in @('startup-sync', 'shutdown-sync', 'project-init-sync')) {
     foreach ($Required in @('SKILL.md', 'agents/openai.yaml')) {
         $Path = Join-Path (Join-Path $WorkspaceAssetRoot $Name) $Required

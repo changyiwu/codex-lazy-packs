@@ -1,4 +1,4 @@
-# Codex 懶人包 #05：安裝本地 AI（Ollama）
+# Codex 懶人包 #08：安裝本地 AI（Ollama）
 
 > 版本：v0.1（Codex 版）
 > 更新日期：2026-04-26
@@ -130,4 +130,4 @@ ollama rm [模型]
 ## 相關連結
 
 - [Ollama 官網](https://ollama.com)
-- [06 設定 Gemini 免費 API](06-設定Gemini免費API.md)
+- [09 設定 Gemini 免費 API](09-設定Gemini免費API.md)
