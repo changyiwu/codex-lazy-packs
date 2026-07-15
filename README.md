@@ -93,7 +93,7 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 | 07 | [連接 Firebase 資料庫](07-連接-Firebase-資料庫.md) | Firebase MCP（Codex 版） |
 | 08 | [安裝本地 AI Ollama](08-安裝本地AI-Ollama.md) | 本地模型，網頁工具用 |
 | 09 | [設定 Gemini 免費 API](09-設定Gemini免費API.md) | Gemini 免費 API，網頁工具用 |
-| 10 | [開始你的專案](10-初始化班級工具工作模式.md) | 安裝開工／收工／新專案初始化 Skills；收工安全檢查後直推 `origin/master` |
+| 10 | [開始你的專案](10-初始化班級工具工作模式.md) | 安裝開工／收工／新專案初始化 Skills；收工安全檢查後直推 `origin/main` |
 | 11 | [用 Image Gen Skill 在 Codex 生圖](11-用Image Gen Skill在Codex生圖.md) | 新手用內建 Image Gen Skill；進階再用 API Key / CLI |
 | 12 | [用 chezmoi 同步 Codex 設定](12-用chezmoi同步Codex設定.md) | 跨電腦同步 `~/.codex/AGENTS.md` 與全域 skills |
 
@@ -102,7 +102,7 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 ## 不通用、需特別注意的章節
 
 - **08 / 09**：跟 Codex / Claude 都無關，是「讓你做的網頁工具有 AI 能力」，兩邊通用。
-- **10 / 12 專案與設定同步**：說「收工」會在安全檢查通過後自動 commit／push `origin/master`；跨電腦同步設定時才使用 chezmoi。
+- **10 / 12 專案與設定同步**：說「收工」會在安全檢查通過後自動 commit／push `origin/main`；跨電腦同步設定時才使用 chezmoi。
 - **11 生圖**：Codex Desktop 新手優先使用內建 Image Gen Skill；API Key / CLI 腳本只作為進階大量產圖與自動化路線。
 - **05 第二大腦設定指南**：每週知識重整優先使用 Codex 自動化；CLI 排程只作為進階備援。
 

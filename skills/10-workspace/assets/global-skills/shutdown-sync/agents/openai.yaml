@@ -1,4 +1,4 @@
 interface:
   display_name: "收工同步"
-  short_description: "安全檢查、更新駕駛艙，並自動提交推送到 master"
-  default_prompt: "使用 $shutdown-sync 安全整理本次工作，更新進度，自動 commit 並 push 到 master。"
+  short_description: "安全檢查、更新駕駛艙，並自動提交推送到 main"
+  default_prompt: "使用 $shutdown-sync 安全整理本次工作，更新進度，自動 commit 並 push 到 main。"
