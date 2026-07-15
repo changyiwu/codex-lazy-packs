@@ -22,12 +22,12 @@ description: 安裝並使用 Codex 專案工作模式，包括開工同步、收
 3. 先盤點既有內容，再補齊 `AGENTS.md`、`README.md`、`.gitignore`、Git repo、選用的 GitHub repo 與 Obsidian 駕駛艙。若同名筆記已存在，先讀取並合併，不要覆寫。建立、補齊、移動或重新命名駕駛艙時，不要更新 Obsidian 的 `知識庫/log.md` 或其他全域操作紀錄。
 4. 保留既有專案規則、歷史與無關變更。建立 GitHub、變更公開狀態、部署、一般初始化 commit／push 或刪除操作都要先取得使用者明確授權。
 5. GitHub 帳號未另行指定時使用 `changyiwu`；可寫入的 `origin` 預設指向 `https://github.com/changyiwu/<repository>.git`，其他帳號的來源 repo 保留為 `upstream`。
-6. 新 repo 與本機分支預設使用 `master`；使用者明確要求 commit 或 push 時直接同步 `origin/master`，不自行建立功能分支或 PR。
+6. 新 repo 與本機分支預設使用 `main`；使用者明確要求 commit 或 push 時直接同步 `origin/main`，不自行建立功能分支或 PR。
 7. push 前抓取並確認遠端、工作區與提交範圍；遇到衝突、未預期遠端提交或分支保護時停止，不 force push。
 
 ## 開工與收工
 
 - 開工：使用 `startup-sync`，讀 `AGENTS.md`、Obsidian 駕駛艙與 Git 狀態後回報；不要改動檔案或遠端。
-- 收工：使用 `shutdown-sync`，檢查敏感資料、更新駕駛艙並提出提交範圍；「收工」本身就是安全檢查通過後 commit／push `origin/master` 的授權，不再重複詢問。推送成功後更新駕駛艙的 commit 與同步狀態。
+- 收工：使用 `shutdown-sync`，檢查敏感資料、更新駕駛艙並提出提交範圍；「收工」本身就是安全檢查通過後 commit／push `origin/main` 的授權，不再重複詢問。推送成功後更新駕駛艙的 commit 與同步狀態。
 
 回報安裝檔案、GitHub URL（若有）與 Obsidian 筆記路徑。
