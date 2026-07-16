@@ -6,6 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $Root = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
 $Failures = [System.Collections.Generic.List[string]]::new()
+$LegacyPosixSkillPath = '~/' + '.agents' + '/skills'
+$LegacyWindowsSkillPath = '\' + '.agents' + '\skills'
 
 function Add-Failure {
     param([Parameter(Mandatory)][string]$Message)
@@ -48,6 +50,10 @@ foreach ($File in $TextFiles) {
 
     if ($Content -match 'OpenJS\.NodeJS(?!\.LTS)') {
         Add-Failure "發現非 LTS Node.js 安裝指令：$Relative"
+    }
+
+    if ($Content.Contains($LegacyPosixSkillPath) -or $Content.Contains($LegacyWindowsSkillPath)) {
+        Add-Failure "發現舊的使用者 Skill 路徑，請改用 ~/.codex/skills：$Relative"
     }
 
     if ($File.Extension -eq '.md') {
@@ -123,4 +129,4 @@ if ($Failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "Validation passed: chapter numbers, Markdown links, Skill metadata, UTF-8 text, Node.js LTS commands, and workspace Skill assets are valid." -ForegroundColor Green
+Write-Host "Validation passed: chapter numbers, Markdown links, Skill metadata, user Skill paths, UTF-8 text, Node.js LTS commands, and workspace Skill assets are valid." -ForegroundColor Green

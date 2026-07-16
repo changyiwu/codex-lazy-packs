@@ -5,7 +5,7 @@
 這是公開發布到 GitHub 的 **Codex 懶人包**倉庫，對應 repo：
 **changyiwu/codex-lazy-packs**
 
-本資料夾與 `Codex-lazy-packs/` 是**平行版本**：同樣的教學流程，分別給 Codex 與 OpenAI Codex（**Desktop / IDE / CLI 三者通用**）使用。
+本資料夾與 `claude-code-lazy-packs/` 是**平行版本**：同樣的教學流程，分別給 Claude Code 與 OpenAI Codex（**Desktop / IDE / CLI 三者通用**）使用。
 
 ## 專案入口與主要檔案
 
