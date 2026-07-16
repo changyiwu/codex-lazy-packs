@@ -118,7 +118,7 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\validate-lazy-pack.ps1
 ```
 
-此檢查會驗證章號沒有重複、相對 Markdown 連結有效、Skill frontmatter 完整、三個工作 Skill 資產齊全、沒有 Unicode 亂碼取代字元，以及 Windows Node.js 安裝指令都使用 LTS。GitHub Actions 也會在 push 與 pull request 自動執行同一份檢查。
+此檢查會驗證章號沒有重複、相對 Markdown 連結有效、Skill frontmatter 完整、三個工作 Skill 資產齊全、使用者 Skill 路徑統一為 `~/.codex/skills/`、沒有 Unicode 亂碼取代字元，以及 Windows Node.js 安裝指令都使用 LTS。GitHub Actions 也會在 push 與 pull request 自動執行同一份檢查。
 
 ---
 

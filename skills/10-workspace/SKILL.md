@@ -8,7 +8,7 @@ description: 安裝並使用 Codex 專案工作模式，包括開工同步、收
 ## 安裝三個工作 Skill
 
 1. 從 `assets/global-skills/` 讀取 `startup-sync`、`shutdown-sync`、`project-init-sync`。
-2. 將缺少的 Skill 安裝到 `$HOME/.agents/skills/`。
+2. 將缺少的 Skill 安裝到 `$HOME/.codex/skills/`。
 3. 若目標已存在，先比較內容並詢問要保留、合併或備份後更新；不要直接覆蓋。
 4. 確認每個目錄都有 `SKILL.md` 與 `agents/openai.yaml`，且預設提示包含正確的 `$skill-name`。
 5. 安裝後提醒使用者重新啟動 Codex；若 Skill 已即時出現，可直接進行明確呼叫測試。

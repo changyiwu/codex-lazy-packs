@@ -17,7 +17,7 @@
 
 ### Firebase vs Supabase
 
-| 比較項目 | Supabase（#04） | Firebase（本懶人包） |
+| 比較項目 | Supabase（#06） | Firebase（本懶人包） |
 |---|---|---|
 | 資料庫類型 | SQL | NoSQL |
 | 免費專案數 | 2 個 | 無限 |
