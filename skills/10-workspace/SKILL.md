@@ -7,11 +7,14 @@ description: 安裝並使用 Codex 專案工作模式，包括開工同步、收
 
 ## 安裝三個工作 Skill
 
-1. 從 `assets/global-skills/` 讀取 `startup-sync`、`shutdown-sync`、`project-init-sync`。
-2. 將缺少的 Skill 安裝到 `$HOME/.codex/skills/`。
-3. 若目標已存在，先比較內容並詢問要保留、合併或備份後更新；不要直接覆蓋。
-4. 確認每個目錄都有 `SKILL.md` 與 `agents/openai.yaml`，且預設提示包含正確的 `$skill-name`。
-5. 安裝後提醒使用者重新啟動 Codex；若 Skill 已即時出現，可直接進行明確呼叫測試。
+1. 使用本 Skill 目錄下的 `scripts/install-workspace-skills.ps1` 安裝 `startup-sync`、`shutdown-sync`、`project-init-sync`；先依目前 `SKILL.md` 的實際路徑解析腳本絕對路徑，不要假設目前工作目錄。
+2. 腳本會將 `assets/global-skills/` 裡的 `SKILL.template.md` 與 `agents/openai.template.yaml` 安裝為使用者 Skill 的正式檔名，預設目的地是使用者目錄下的 `.codex/skills/`。
+3. 目標不存在時直接安裝；目標內容相同時保持不動；內容不同時逐一讓使用者選擇保留、備份後更新、手動合併或停止。不要繞過腳本直接覆蓋。
+4. 需要先預覽時使用 `-WhatIf`；自動化流程必須明確傳入 `-ExistingAction Keep`、`BackupAndUpdate` 或 `ManualMerge`，不要讓非互動工作停在提示上。
+5. 確認每個目的地都有 `SKILL.md` 與 `agents/openai.yaml`，且腳本回報 `Installed`、`Current`、`Kept`、`Updated` 或 `ManualMergeRequired`。
+6. 安裝後提醒使用者重新啟動 Codex；若 Skill 已即時出現，可直接進行明確呼叫測試。
+
+範本刻意不使用正式檔名 `SKILL.md`，避免 `codex-workspace` 自己被安裝到全域技能資料夾時，三份內附範本又被 Codex 註冊為同名技能。
 
 這三個 Skill 都是手動觸發，不建立排程或未經觸發自行動作。使用者說「收工」、「結束工作」或「整理並同步」時，視為授權 `shutdown-sync` 在安全檢查通過後自動 commit／push；使用者當次明確要求不要 push 時，優先服從。
 
