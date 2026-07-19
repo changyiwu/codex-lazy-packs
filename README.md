@@ -52,7 +52,7 @@
 請讀取 repo 內容，列出所有可用的懶人包，問我要裝哪些。
 ```
 
-AI 會自動讀取 `SKILL.md`（安裝入口），列出 17 個可安裝技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 18。
+AI 會自動讀取 `SKILL.md`（安裝入口），列出 14 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 15。`codex-workspace` 安裝後會再安全補齊 `startup-sync`、`shutdown-sync`、`project-init-sync` 三個工作 Skill；它們的內附範本不會重複出現在安裝清單。
 
 也可以直接安裝「環境建置」Skill：
 
