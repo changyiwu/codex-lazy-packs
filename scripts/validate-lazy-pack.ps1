@@ -105,8 +105,8 @@ foreach ($SkillFile in $SkillFiles) {
     }
 }
 
-if ($SkillFiles.Count -ne 13) {
-    Add-Failure "可直接安裝的 Skill 數量應為 13，實際為 $($SkillFiles.Count)"
+if ($SkillFiles.Count -ne 11) {
+    Add-Failure "可直接安裝的 Skill 數量應為 11，實際為 $($SkillFiles.Count)"
 }
 
 foreach ($DuplicateName in ($SkillNames | Group-Object | Where-Object Count -gt 1)) {

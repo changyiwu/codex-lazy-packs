@@ -88,22 +88,18 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 | 02 | [初學者必裝外掛程式與技能](02-Codex必裝Skills與Plugins.md) | 基礎工具快篩、GitHub、Browser Use、Office 文件、生圖、官方文件與技能工具檢查 |
 | 03 | [連接 GitHub](03-連接-GitHub.md) | GitHub CLI、GitHub App 與 push 驗證 |
 | 04 | [連接 Obsidian](04-連接-Obsidian.md) | 確認 vault、設定全域 AGENTS.md，並用資料夾授權或 MCPVault 讀寫 |
-| 05 | [第二大腦設定指南](05-第二大腦設定指南.md) | 三層結構 + AGENTS.md + 模板 |
-| 06 | [連接 Supabase 資料庫](06-連接-Supabase-資料庫.md) | Supabase MCP（Codex 版） |
-| 07 | [連接 Firebase 資料庫](07-連接-Firebase-資料庫.md) | Firebase MCP（Codex 版） |
-| 08 | [安裝本地 AI Ollama](08-安裝本地AI-Ollama.md) | 本地模型，網頁工具用 |
-| 09 | [設定 Gemini 免費 API](09-設定Gemini免費API.md) | Gemini 免費 API，網頁工具用 |
-| 10 | [用 Image Gen Skill 在 Codex 生圖](10-用Image Gen Skill在Codex生圖.md) | 新手用內建 Image Gen Skill；進階再用 API Key / CLI |
-| 11 | [用 chezmoi 同步 Codex 設定](11-用chezmoi同步Codex設定.md) | 跨電腦同步 `~/.codex/AGENTS.md` 與 `~/.agents/skills/` 中指定的全域 skills |
+| 05 | [連接 Supabase 資料庫](05-連接-Supabase-資料庫.md) | Supabase MCP（Codex 版） |
+| 06 | [連接 Firebase 資料庫](06-連接-Firebase-資料庫.md) | Firebase MCP（Codex 版） |
+| 07 | [安裝本地 AI Ollama](07-安裝本地AI-Ollama.md) | 本地模型，網頁工具用 |
+| 08 | [設定 Gemini 免費 API](08-設定Gemini免費API.md) | Gemini 免費 API，網頁工具用 |
+| 09 | [用 Image Gen Skill 在 Codex 生圖](09-用Image Gen Skill在Codex生圖.md) | 新手用內建 Image Gen Skill；進階再用 API Key / CLI |
 
 ---
 
 ## 不通用、需特別注意的章節
 
-- **08 / 09**：跟 Codex / Claude 都無關，是「讓你做的網頁工具有 AI 能力」，兩邊通用。
-- **10 生圖**：Codex Desktop 新手優先使用內建 Image Gen Skill；API Key / CLI 腳本只作為進階大量產圖與自動化路線。
-- **11 設定同步**：跨電腦同步明確選定的 Codex 安全設定時才使用 chezmoi，不要同步整個 `~/.codex/`。
-- **05 第二大腦設定指南**：每週知識重整優先使用 Codex 自動化；CLI 排程只作為進階備援。
+- **07 / 08**：跟 Codex / Claude 都無關，是「讓你做的網頁工具有 AI 能力」，兩邊通用。
+- **09 生圖**：Codex Desktop 新手優先使用內建 Image Gen Skill；API Key / CLI 腳本只作為進階大量產圖與自動化路線。
 
 > Codex 自動化應先手動測試成功，再由使用者明確決定是否建立。需要讀寫本機專案的排程，必須保持電腦開機且 Desktop app 正在執行；CLI 與 IDE 擴充本身不提供排程管理介面。
 

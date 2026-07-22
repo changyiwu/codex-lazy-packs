@@ -1,4 +1,4 @@
-# Codex 懶人包 #10：用 Image Gen Skill 在 Codex 生圖
+# Codex 懶人包 #09：用 Image Gen Skill 在 Codex 生圖
 
 > 版本：v0.3（Codex Desktop 版）
 > 更新日期：2026-07-22

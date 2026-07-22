@@ -66,7 +66,7 @@ EP01 已經處理：
 > 新手不要追求「裝最多」。先裝最常用、最安全、最能立刻產生教學價值的組合。
 
 > [!note]
-> MCP 先不要在本集展開。Codex 設定裡雖然有整合與 MCP 相關能力，但初學者第二集先講「外掛程式」與「技能」就好；Obsidian / MCPVault 留到第二大腦集數。
+> MCP 先不要在本集展開。Codex 設定裡雖然有整合與 MCP 相關能力，但初學者第二集先講「外掛程式」與「技能」就好；Obsidian / MCPVault 留到連線章節。
 
 ---
 
@@ -97,7 +97,7 @@ EP01 已經處理：
 |------|------|
 | Gmail | 需要整理信件、草擬回信再連 |
 | Google Calendar | 需要行程摘要、會議準備再連 |
-| Obsidian / MCPVault | 第二大腦主題，建議留到後續集數 |
+| Obsidian / MCPVault | 筆記連線主題，建議留到第 04 章 |
 | 其他 MCP | 不知道用途就先不要裝，本集不講 |
 
 ---
@@ -349,7 +349,7 @@ repositories: []
 
 ## 步驟五：MCP 先知道，不急著講
 
-MCP 和 Obsidian / MCPVault 是第二大腦主題，建議後面再做。
+MCP 和 Obsidian / MCPVault 需要另外設定連線，建議到第 04 章再做。
 
 原因：
 
@@ -397,7 +397,7 @@ MCP 和 Obsidian / MCPVault 是第二大腦主題，建議後面再做。
 
 - Gmail：已啟用 / 未啟用 / 不需要
 - Google Calendar：已啟用 / 未啟用 / 不需要
-- Obsidian / MCPVault：留到後續集數
+- Obsidian / MCPVault：留到第 04 章
 
 ## 下一步建議
 
@@ -432,7 +432,7 @@ EP02 可以這樣安排：
 | GitHub 外掛跟 GitHub CLI 差在哪 | 外掛讓 Codex 對話讀 GitHub；CLI 讓本機 commit / push |
 | 為什麼本集又檢查 Git | 因為完全新手常跳過 #00，沒有 Git 後面 GitHub 工作流會直接卡住 |
 | 一定要裝 Gmail / Calendar 嗎 | 不一定，需要整理信件或行程再裝 |
-| MCP / Obsidian 要本集就裝嗎 | 不建議，留到第二大腦集數 |
+| MCP / Obsidian 要本集就裝嗎 | 不建議，留到第 04 章 |
 | 我看不到某個外掛 | 可能尚未啟用 marketplace，或 Codex 版本不同 |
 | 裝越多越好嗎 | 不是，先裝高頻、安全、用得到的 |
 

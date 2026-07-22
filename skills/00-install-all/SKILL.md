@@ -14,12 +14,10 @@ description: 一次安裝所有 Codex 懶人包技能。說「全部安裝」「
 3. codex-essentials — 必裝 Skills
 4. codex-github — GitHub
 5. codex-obsidian — Obsidian
-6. codex-second-brain — 第二大腦
-7. codex-supabase — Supabase
-8. codex-firebase — Firebase
-9. codex-ollama — Ollama
-10. codex-gemini — Gemini
-11. codex-draw — 生圖
-12. codex-chezmoi — 同步設定
+6. codex-supabase — Supabase
+7. codex-firebase — Firebase
+8. codex-ollama — Ollama
+9. codex-gemini — Gemini
+10. codex-draw — 生圖
 
-每完成一個報告進度，最終總表：12 項各別狀態。
+每完成一個報告進度，最終總表：10 項各別狀態。
