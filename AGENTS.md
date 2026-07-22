@@ -28,7 +28,7 @@
 
 - Vault 路徑：`C:\Users\chang\我的雲端硬碟\2ndbrain`
 - 結構：`每日筆記/` → `創作庫/` → `知識庫/`
-- 本專案駕駛艙：`codex-lazy-packs-專案駕駛艙.md`
+- 本專案工作筆記：`C:\Users\chang\我的雲端硬碟\2ndbrain\codex-lazy-packs\專案工作流程.md`
 
 ## 雙倉同步原則
 
@@ -50,4 +50,4 @@
 
 ## 最近進度
 
-- 2026-07-22：移除內建工作流程 Skill，將 Image Gen 與 chezmoi 懶人包重新編為 #10、#11，並同步安裝與驗證規則；發布驗證已通過。
+- 2026-07-22：移除第二大腦與 chezmoi 章節及對應 Skill，其餘章節與 Skill 重編為 #00–#09；專案工作筆記改用 Vault 內的專案資料夾路徑，發布驗證已通過。
