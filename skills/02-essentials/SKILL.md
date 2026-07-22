@@ -13,7 +13,7 @@ description: Codex 初學者必裝 Skills 與 Plugins。說「裝基本外掛」
 
 ## 步驟二：檢查 Skills
 
-檢查 `$HOME/.codex/skills/` 與 Codex 目前可用的 Skills，優先確認：
+分別檢查 `$HOME/.agents/skills/` 中的使用者全域 Skills、Codex 隨附的系統 Skills，以及 Codex 目前可用的 Skills。不要把使用者全域 Skill 放進內建系統 Skill 目錄。優先確認：
 
 - `imagegen`：生成或修改圖片
 - `openai-docs`：查詢 OpenAI／Codex 官方文件

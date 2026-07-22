@@ -1,7 +1,7 @@
 # Codex 懶人包 #02：初學者必裝外掛程式與技能
 
-> 版本：v0.5（Codex Desktop 版）
-> 更新日期：2026-04-28
+> 版本：v0.6（Codex Desktop 版）
+> 更新日期：2026-07-22
 > 對應影片：Codex基本功 EP02（建議主題）
 
 > 本篇接在 EP01 之後。EP01 已經完成 Codex 安裝、基本設定、第一個專案工作區與 `AGENTS.md` 初始化；本篇不重複建專案，而是帶新手檢查 Codex 該裝哪些「外掛程式」與「技能」，讓 Codex 從「能在資料夾工作」升級成「老師的 AI 工作台」。
@@ -47,7 +47,7 @@ EP01 已經處理：
 - 建立第一個專案資料夾
 - 進入「專案」而不是只用聊天視窗
 - 認識 `AGENTS.md`
-- 做第一次專案初始化
+- 準備第一個專案工作區
 
 本集從這裡往下接：
 
@@ -206,9 +206,11 @@ uv --version
 Windows 可請 Codex 執行：
 
 ```powershell
-Get-ChildItem -Force -Name "$env:USERPROFILE\.codex\skills"
-Get-ChildItem -Force -Name "$env:USERPROFILE\.codex\skills\.system"
+Get-ChildItem -Force -Name "$env:USERPROFILE\.agents\skills" -ErrorAction SilentlyContinue
+Get-ChildItem -Force -Name "$env:USERPROFILE\.codex\skills\.system" -ErrorAction SilentlyContinue
 ```
+
+第一行檢查使用者自行安裝、所有專案都可使用的全域 skills；第二行檢查 Codex 隨附的系統 skills。不要把使用者全域 skill 放進內建系統 Skill 目錄。
 
 如果看到以下項目，代表常用系統 skills 已存在：
 
@@ -416,7 +418,7 @@ EP02 可以這樣安排：
 | 名詞釐清 | 外掛程式 vs 技能 |
 | 必裝外掛程式 | GitHub、Browser Use、Documents、Presentations、Spreadsheets |
 | 必裝技能 | imagegen、openai-docs、skill-installer、skill-creator |
-| 實際檢查 | 看 `.codex\skills` 與 `config.toml` |
+| 實際檢查 | 看 `.agents\skills`、`.codex\skills\.system` 與 `config.toml` |
 | 安全提醒 | Gmail / Calendar 不急著連，MCP 之後再講 |
 | 下集預告 | 連 GitHub，讓作品能上線 |
 
@@ -442,6 +444,7 @@ EP02 可以這樣安排：
 |------|------|----------|
 | 2026-04-27 | v0.1 | 初版，建立第一個 Codex 專案工作區 |
 | 2026-04-27 | v0.2 | 補上初學者必裝 Skills / Plugins 檢查 |
-| 2026-04-27 | v0.3 | 改版為 EP02 主題：初學者必裝 Skills 與 Plugins，移除與 EP01 重複的專案初始化主流程 |
+| 2026-04-27 | v0.3 | 改版為 EP02 主題：初學者必裝 Skills 與 Plugins，移除與 EP01 重複的內容 |
 | 2026-04-27 | v0.4 | 收斂為 Codex 介面中的「外掛程式」與「技能」，MCP 留到後續集數 |
 | 2026-04-28 | v0.5 | 參考 Claude 版環境檢查，補上 Git、GitHub CLI、Node.js、uv 基礎工具快篩 |
+| 2026-07-22 | v0.6 | 依最新版官方文件將使用者全域 Skill 路徑改為 `~/.agents/skills/`，並與內建系統 Skill 路徑分開說明 |

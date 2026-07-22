@@ -1,4 +1,0 @@
-interface:
-  display_name: "開工同步"
-  short_description: "讀取專案規則、Obsidian 筆記與 Git 狀態，安全接續工作"
-  default_prompt: "使用 $startup-sync 讀取專案規則、筆記與 Git 狀態，開始本次工作。"

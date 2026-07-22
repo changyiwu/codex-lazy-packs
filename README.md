@@ -52,7 +52,7 @@
 請讀取 repo 內容，列出所有可用的懶人包，問我要裝哪些。
 ```
 
-AI 會自動讀取 `SKILL.md`（安裝入口），列出 14 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 15。`codex-workspace` 安裝後會再安全補齊 `startup-sync`、`shutdown-sync`、`project-init-sync` 三個工作 Skill；它們的內附範本不會重複出現在安裝清單。
+AI 會自動讀取 `SKILL.md`（安裝入口），列出 13 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 14。
 
 也可以直接安裝「環境建置」Skill：
 
@@ -93,17 +93,16 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 | 07 | [連接 Firebase 資料庫](07-連接-Firebase-資料庫.md) | Firebase MCP（Codex 版） |
 | 08 | [安裝本地 AI Ollama](08-安裝本地AI-Ollama.md) | 本地模型，網頁工具用 |
 | 09 | [設定 Gemini 免費 API](09-設定Gemini免費API.md) | Gemini 免費 API，網頁工具用 |
-| 10 | [開始你的專案](10-初始化班級工具工作模式.md) | 安裝開工／收工／新專案初始化 Skills；收工安全檢查後直推 `origin/main` |
-| 11 | [用 Image Gen Skill 在 Codex 生圖](11-用Image Gen Skill在Codex生圖.md) | 新手用內建 Image Gen Skill；進階再用 API Key / CLI |
-| 12 | [用 chezmoi 同步 Codex 設定](12-用chezmoi同步Codex設定.md) | 跨電腦同步 `~/.codex/AGENTS.md` 與全域 skills |
+| 10 | [用 Image Gen Skill 在 Codex 生圖](10-用Image Gen Skill在Codex生圖.md) | 新手用內建 Image Gen Skill；進階再用 API Key / CLI |
+| 11 | [用 chezmoi 同步 Codex 設定](11-用chezmoi同步Codex設定.md) | 跨電腦同步 `~/.codex/AGENTS.md` 與 `~/.agents/skills/` 中指定的全域 skills |
 
 ---
 
 ## 不通用、需特別注意的章節
 
 - **08 / 09**：跟 Codex / Claude 都無關，是「讓你做的網頁工具有 AI 能力」，兩邊通用。
-- **10 / 12 專案與設定同步**：說「收工」會在安全檢查通過後自動 commit／push `origin/main`；跨電腦同步設定時才使用 chezmoi。
-- **11 生圖**：Codex Desktop 新手優先使用內建 Image Gen Skill；API Key / CLI 腳本只作為進階大量產圖與自動化路線。
+- **10 生圖**：Codex Desktop 新手優先使用內建 Image Gen Skill；API Key / CLI 腳本只作為進階大量產圖與自動化路線。
+- **11 設定同步**：跨電腦同步明確選定的 Codex 安全設定時才使用 chezmoi，不要同步整個 `~/.codex/`。
 - **05 第二大腦設定指南**：每週知識重整優先使用 Codex 自動化；CLI 排程只作為進階備援。
 
 > Codex 自動化應先手動測試成功，再由使用者明確決定是否建立。需要讀寫本機專案的排程，必須保持電腦開機且 Desktop app 正在執行；CLI 與 IDE 擴充本身不提供排程管理介面。
@@ -118,7 +117,7 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\validate-lazy-pack.ps1
 ```
 
-此檢查會驗證章號沒有重複、相對 Markdown 連結有效、Skill frontmatter 完整、三個工作 Skill 資產齊全、使用者 Skill 路徑統一為 `~/.codex/skills/`、沒有 Unicode 亂碼取代字元，以及 Windows Node.js 安裝指令都使用 LTS。GitHub Actions 也會在 push 與 pull request 自動執行同一份檢查。
+此檢查會驗證章號沒有重複、相對 Markdown 連結有效、Skill frontmatter 完整、使用者全域 Skill 路徑統一為 `~/.agents/skills/`、沒有 Unicode 亂碼取代字元，以及 Windows Node.js 安裝指令都使用 LTS。GitHub Actions 也會在 push 與 pull request 自動執行同一份檢查。
 
 ---
 

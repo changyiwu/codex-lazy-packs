@@ -19,11 +19,7 @@ description: 一次安裝所有 Codex 懶人包技能。說「全部安裝」「
 8. codex-firebase — Firebase
 9. codex-ollama — Ollama
 10. codex-gemini — Gemini
-11. codex-workspace — 安裝三個工作 Skill，並提供專案初始化流程
-12. startup-sync — 確認開工 Skill 已安裝；不要在安裝流程中執行開工
-13. shutdown-sync — 確認收工 Skill 已安裝；不要在安裝流程中執行收工
-14. project-init-sync — 確認初始化 Skill 已安裝；沒有專案資料時不要建立專案
-15. codex-draw — 生圖
-16. codex-chezmoi — 同步設定
+11. codex-draw — 生圖
+12. codex-chezmoi — 同步設定
 
-每完成一個報告進度，最終總表：16 項各別狀態。三個工作 Skill 由 `codex-workspace` 安裝，後續項目只驗證存在與格式，不重複覆蓋。
+每完成一個報告進度，最終總表：12 項各別狀態。

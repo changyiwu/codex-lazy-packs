@@ -6,8 +6,10 @@ $ErrorActionPreference = 'Stop'
 
 $Root = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
 $Failures = [System.Collections.Generic.List[string]]::new()
-$LegacyPosixSkillPath = '~/' + '.agents' + '/skills'
-$LegacyWindowsSkillPath = '\' + '.agents' + '\skills'
+$LegacyUserSkillPathPatterns = @(
+    '(?i)\.codex[\\/]skills(?![\\/]\.system(?=$|[\\/]|[^A-Za-z0-9._-]))',
+    '(?i)dot_codex[\\/]skills'
+)
 
 function Add-Failure {
     param([Parameter(Mandatory)][string]$Message)
@@ -52,8 +54,8 @@ foreach ($File in $TextFiles) {
         Add-Failure "發現非 LTS Node.js 安裝指令：$Relative"
     }
 
-    if ($Content.Contains($LegacyPosixSkillPath) -or $Content.Contains($LegacyWindowsSkillPath)) {
-        Add-Failure "發現舊的使用者 Skill 路徑，請改用 ~/.codex/skills：$Relative"
+    if ($LegacyUserSkillPathPatterns | Where-Object { $Content -match $_ }) {
+        Add-Failure "發現舊的使用者 Skill 路徑，請改用 ~/.agents/skills；~/.codex/skills/.system 僅供 Codex 隨附的系統 Skill：$Relative"
     }
 
     if ($File.Extension -eq '.md') {
@@ -103,8 +105,8 @@ foreach ($SkillFile in $SkillFiles) {
     }
 }
 
-if ($SkillFiles.Count -ne 14) {
-    Add-Failure "可直接安裝的 Skill 數量應為 14，實際為 $($SkillFiles.Count)"
+if ($SkillFiles.Count -ne 13) {
+    Add-Failure "可直接安裝的 Skill 數量應為 13，實際為 $($SkillFiles.Count)"
 }
 
 foreach ($DuplicateName in ($SkillNames | Group-Object | Where-Object Count -gt 1)) {
@@ -115,40 +117,6 @@ foreach ($AssetSkillFile in ($SkillFiles | Where-Object FullName -Match '[\\/]as
     Add-Failure "assets 內不可放置可被掃描的 SKILL.md，請改用範本檔名：$(Get-RepoRelativePath $AssetSkillFile.FullName)"
 }
 
-$WorkspaceAssetRoot = Join-Path $Root 'skills/10-workspace/assets/global-skills'
-foreach ($Name in @('startup-sync', 'shutdown-sync', 'project-init-sync')) {
-    foreach ($Required in @('SKILL.template.md', 'agents/openai.template.yaml')) {
-        $Path = Join-Path (Join-Path $WorkspaceAssetRoot $Name) $Required
-        if (-not (Test-Path -LiteralPath $Path)) {
-            Add-Failure "缺少工作 Skill 範本：$(Get-RepoRelativePath $Path)"
-        }
-    }
-
-    $TemplateSkillPath = Join-Path (Join-Path $WorkspaceAssetRoot $Name) 'SKILL.template.md'
-    $TemplateUiPath = Join-Path (Join-Path $WorkspaceAssetRoot $Name) 'agents/openai.template.yaml'
-    if (Test-Path -LiteralPath $TemplateSkillPath) {
-        $TemplateContent = Get-Content -Raw -Encoding utf8 -LiteralPath $TemplateSkillPath
-        $TemplateFrontmatter = [regex]::Match($TemplateContent, '(?s)\A---\s*\r?\n(?<body>.*?)\r?\n---')
-        $ExpectedNamePattern = '(?m)^name:\s*["'']?' + [regex]::Escape($Name) + '["'']?\s*$'
-        if (-not $TemplateFrontmatter.Success) {
-            Add-Failure "工作 Skill 範本缺少有效 YAML frontmatter：$(Get-RepoRelativePath $TemplateSkillPath)"
-        } elseif ($TemplateFrontmatter.Groups['body'].Value -notmatch $ExpectedNamePattern) {
-            Add-Failure "工作 Skill 範本 name 應為 $Name：$(Get-RepoRelativePath $TemplateSkillPath)"
-        }
-    }
-    if (Test-Path -LiteralPath $TemplateUiPath) {
-        $TemplateUi = Get-Content -Raw -Encoding utf8 -LiteralPath $TemplateUiPath
-        if (-not $TemplateUi.Contains('$' + $Name)) {
-            Add-Failure "工作 Skill 範本的 default_prompt 未包含 `$$Name：$(Get-RepoRelativePath $TemplateUiPath)"
-        }
-    }
-}
-
-$WorkspaceInstaller = Join-Path $Root 'skills/10-workspace/scripts/install-workspace-skills.ps1'
-if (-not (Test-Path -LiteralPath $WorkspaceInstaller -PathType Leaf)) {
-    Add-Failure "缺少工作 Skill 安裝腳本：$(Get-RepoRelativePath $WorkspaceInstaller)"
-}
-
 if ($Failures.Count -gt 0) {
     Write-Host "Validation failed with $($Failures.Count) issue(s):" -ForegroundColor Red
     foreach ($Failure in $Failures) {
@@ -157,4 +125,4 @@ if ($Failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "Validation passed: chapter numbers, Markdown links, Skill metadata, user Skill paths, UTF-8 text, Node.js LTS commands, and workspace Skill templates are valid." -ForegroundColor Green
+Write-Host "Validation passed: chapter numbers, Markdown links, Skill metadata, user Skill paths, UTF-8 text, and Node.js LTS commands are valid." -ForegroundColor Green

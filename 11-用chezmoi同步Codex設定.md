@@ -1,7 +1,7 @@
-# Codex 懶人包 #12：用 chezmoi 同步 Codex 設定與收工技能
+# Codex 懶人包 #11：用 chezmoi 同步 Codex 設定
 
-> 版本：v0.1（Codex 版）
-> 更新日期：2026-04-26
+> 版本：v0.2（Codex 版）
+> 更新日期：2026-07-22
 > 適用：多台電腦都要使用同一套 Codex 全域規則與 skills
 
 ---
@@ -11,9 +11,9 @@
 讓你把 Codex 的安全設定同步到多台電腦：
 
 - `~/.codex/AGENTS.md`
-- `~/.codex/skills/shutdown-sync/`
+- 明確選定的 `~/.agents/skills/<skill-name>/`
 
-完成後，另一台電腦只要執行 `chezmoi update`，就能取得同一套「收工」流程。
+完成後，另一台電腦只要執行 `chezmoi update`，就能取得同一套安全設定。
 
 > [!important]
 > 不要整份同步 `~/.codex/`。
@@ -26,7 +26,7 @@
 - [ ] 已有 GitHub 帳號
 - [ ] 已有 chezmoi dotfiles repo，或準備建立一個
 - [ ] 兩台電腦都已安裝 Codex
-- [ ] 已完成想同步的 skill，例如 `shutdown-sync`
+- [ ] 已確認想同步的 skill 不含憑證或機密資料
 
 本範例使用：
 
@@ -101,7 +101,7 @@ git -C "$env:USERPROFILE\.local\share\chezmoi" remote -v
 | 檔案 / 資料夾 | 是否納管 | 原因 |
 |---------------|----------|------|
 | `~/.codex/AGENTS.md` | 是 | 全域偏好、觸發詞、固定規則 |
-| `~/.codex/skills/shutdown-sync/` | 是 | 收工同步 skill |
+| `~/.agents/skills/<skill-name>/` | 視需要 | 使用者全域 skill；只納管已檢查、不含機密資料的指定 skill |
 | `~/.codex/config.toml` | 謹慎 | 含本機路徑、MCP、信任專案；建議做模板，不直接硬同步 |
 | `~/.codex/auth.json` | 否 | 登入憑證 |
 | `~/.codex/logs_*.sqlite` | 否 | 本機紀錄 |
@@ -112,7 +112,7 @@ git -C "$env:USERPROFILE\.local\share\chezmoi" remote -v
 
 ```powershell
 & "$env:USERPROFILE\.local\bin\chezmoi.exe" add "$env:USERPROFILE\.codex\AGENTS.md"
-& "$env:USERPROFILE\.local\bin\chezmoi.exe" add "$env:USERPROFILE\.codex\skills\shutdown-sync"
+& "$env:USERPROFILE\.local\bin\chezmoi.exe" add "$env:USERPROFILE\.agents\skills\<skill-name>"
 ```
 
 確認：
@@ -126,9 +126,10 @@ chezmoi source 會出現：
 
 ```text
 dot_codex/
-├── AGENTS.md
+└── AGENTS.md
+dot_agents/
 └── skills/
-    └── shutdown-sync/
+    └── <skill-name>/
         ├── SKILL.md
         └── agents/
             └── openai.yaml
@@ -139,8 +140,8 @@ dot_codex/
 ## 階段四：提交並推送 dotfiles repo
 
 ```powershell
-git -C "$env:USERPROFILE\.local\share\chezmoi" add dot_codex
-git -C "$env:USERPROFILE\.local\share\chezmoi" commit -m "同步 Codex 收工技能"
+git -C "$env:USERPROFILE\.local\share\chezmoi" add dot_codex/AGENTS.md dot_agents/skills/<skill-name>
+git -C "$env:USERPROFILE\.local\share\chezmoi" commit -m "同步 Codex 安全設定"
 git -C "$env:USERPROFILE\.local\share\chezmoi" push origin main
 ```
 
@@ -165,7 +166,7 @@ git -C "$env:USERPROFILE\.local\share\chezmoi" push origin main
 
 ```text
 C:\Users\<使用者>\.codex\AGENTS.md
-C:\Users\<使用者>\.codex\skills\shutdown-sync\SKILL.md
+C:\Users\<使用者>\.agents\skills\<skill-name>\SKILL.md
 ```
 
 ---
@@ -187,19 +188,12 @@ chezmoi 只同步「安全設定」。另一台電腦仍需要自己設定：
 
 ---
 
-## 本次三師爸實測
+## 完成檢查
 
-已完成：
-
-- 安裝 chezmoi `v2.70.2` 到 `C:\Users\mathr\.local\bin\chezmoi.exe`
-- source repo：`C:\Users\mathr\.local\share\chezmoi`
-- GitHub repo：`mathruffian-dot/claude-config`
-- 納管：
-  - `dot_codex/AGENTS.md`
-  - `dot_codex/skills/shutdown-sync/SKILL.md`
-  - `dot_codex/skills/shutdown-sync/agents/openai.yaml`
-- commit：`a9e401f 同步 Codex 收工技能`
-- 已推送到 GitHub
+- `chezmoi status` 沒有未預期變更
+- dotfiles repo 只包含明確選定的安全設定
+- GitHub 上沒有 `auth.json`、token、憑證、logs、state、cache 或 tmp
+- 另一台電腦套用後，Codex 能讀取 `AGENTS.md` 與選定的 skill
 
 ---
 
@@ -245,7 +239,7 @@ Codex sandbox 沒有直接讀寫 `~/.config/chezmoi` 的權限。
 
 解法：
 
-只同步明確安全的檔案：`AGENTS.md` 與特定 skill。
+只同步明確安全的檔案：`~/.codex/AGENTS.md` 與特定的 `~/.agents/skills/<skill-name>/`。
 
 ---
 
@@ -254,3 +248,4 @@ Codex sandbox 沒有直接讀寫 `~/.config/chezmoi` 的權限。
 - [chezmoi 官方安裝文件](https://www.chezmoi.io/install/)
 - [chezmoi Windows 文件](https://www.chezmoi.io/user-guide/machines/windows/)
 - [Codex AGENTS.md 官方文件](https://developers.openai.com/codex/guides/agents-md)
+- [Codex Skills 官方文件](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills)

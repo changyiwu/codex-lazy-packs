@@ -12,7 +12,7 @@ Windows：`winget install twpayne.chezmoi`
 ## 納管安全設定
 ```bash
 chezmoi add ~/.codex/AGENTS.md
-chezmoi add ~/.codex/skills/xxx
+chezmoi add ~/.agents/skills/xxx
 ```
 
 ⚠️ 不要同步 entire `~/.codex/`（auth.json、logs、state 會洩漏）
@@ -21,7 +21,7 @@ chezmoi add ~/.codex/skills/xxx
 ```bash
 chezmoi cd
 git status --short
-git add dot_codex/AGENTS.md dot_codex/skills/<本次修改的skill>
+git add dot_codex/AGENTS.md dot_agents/skills/<本次修改的skill>
 git commit -m "..."
 git push
 ```
