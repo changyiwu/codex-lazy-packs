@@ -1,7 +1,7 @@
-# Codex 懶人包 #11：用 Image Gen Skill 在 Codex 生圖
+# Codex 懶人包 #10：用 Image Gen Skill 在 Codex 生圖
 
-> 版本：v0.2（Codex Desktop 版）
-> 更新日期：2026-04-27
+> 版本：v0.3（Codex Desktop 版）
+> 更新日期：2026-07-22
 > 適合對象：想在 Codex 裡直接生成教學圖片、封面、插圖、遊戲素材的新手
 
 > 本篇重點：新手先用 Codex 內建 `Image Gen Skill`，不用設定 API Key；需要大量產圖、自動化或精準控制時，再改走 `OPENAI_API_KEY` 的 API / CLI 路線。
@@ -70,6 +70,8 @@ Codex 會把它當成圖片編輯或再生成任務處理。
 ```text
 C:\Users\<你>\.codex\skills\.system\imagegen\SKILL.md
 ```
+
+這是 Codex 隨附的系統 Skill 路徑。自己安裝、所有專案都要使用的全域 Skill，應放在 `C:\Users\<你>\.agents\skills\<skill-name>\`；不要放進 `.system`。
 
 ### 圖片會存在哪裡？
 
@@ -263,3 +265,4 @@ https://platform.openai.com/api-keys
 |------|------|----------|
 | 2026-04-26 | v0.1 | 舊版：以 API Key + gpt-image-2 腳本為主 |
 | 2026-04-27 | v0.2 | 改成 Codex Desktop Image Gen Skill 優先，API / CLI 改列進階路線，補上額度與計費分流說明 |
+| 2026-07-22 | v0.3 | 區分 Codex 隨附的 `.system` Skill 與使用者安裝在 `~/.agents/skills/` 的全域 Skill |

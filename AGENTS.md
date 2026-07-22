@@ -47,3 +47,7 @@
 - 未經使用者明確要求，不建立或連接 GitHub 遠端、不提交、不推送、不啟用 Pages、不部署
 - 不修改 Firebase 安全規則；本專案目前沒有連結 Firebase 專案
 - 修改教學章節或 Skill 後，先執行 `scripts/validate-lazy-pack.ps1`
+
+## 最近進度
+
+- 2026-07-22：移除內建工作流程 Skill，將 Image Gen 與 chezmoi 懶人包重新編為 #10、#11，並同步安裝與驗證規則；發布驗證已通過。
