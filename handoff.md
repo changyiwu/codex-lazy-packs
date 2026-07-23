@@ -2,27 +2,30 @@
 
 ## ⏯️ 目前做到哪
 
-已移除第二大腦與 chezmoi 兩個章節及對應 Skill，將其餘章節與 Skill 重編為 #00–#09，並同步所有安裝入口、章內連結與驗證規則。
+已修正 Skill 安裝命名流程：repo 內仍保留 `skills/00-env-setup` 等編號資料夾；安裝到 `~/.agents/skills/` 時使用 frontmatter 的 `codex-env-setup` 等正式名稱。入口 Skill 已明定 `npx skills add --agent codex`，GitHub helper fallback 則必須逐項傳入 `--name`。
 
 ## 🚦 目前狀態
 
 - `scripts/validate-lazy-pack.ps1` 與 `git diff --check` 已通過。
 - 教學章節現為 10 章（#00–#09），可直接安裝的 Skills 現為 11 個。
-- 專案工作筆記已改用 `codex-lazy-packs/專案工作流程.md`。
+- `npx skills add . --full-depth --list` 已確認顯示 11 個 `codex-*` Skills，加上根入口共 12 個。
+- 本機專案安裝與 GitHub helper `--name` fallback 都已實測產生 `codex-env-setup`，不會產生 `00-env-setup`。
+- 11 個 Skills 已通過 Skill Creator `quick_validate.py`。
+- 這台電腦原有的 7 個編號全域 Skill 資料夾已原地改名為對應的 `codex-*` 名稱，並驗證資料夾名與 frontmatter `name` 一致。
 
 ## ➡️ 下一步
 
-1. 發布後檢查 GitHub README、章節連結與 Skill 安裝入口。
-2. 如需同步本機全域 Skills，另外清理已安裝的 `codex-second-brain`、`codex-chezmoi` 並重新安裝新版。
+1. 從 GitHub repo 重跑一次全域安裝，確認遠端版本落在 `~/.agents/skills/codex-*`。
 
 ## ⚠️ 注意事項
 
 - 不要恢復已移除的第二大腦或 chezmoi 章節與 Skill。
-- 本次只更新 repo 內容，未修改本機已安裝的全域 Skills。
+- repo 內的 Skill 資料夾必須保留編號前綴；只有全域安裝目的地使用 `codex-*`。
+- 使用內建 GitHub skill-installer helper 時，不能批次省略 `--name`。
 - 修改任何懶人包或 Skill 後必須重跑發布驗證。
 
 ## 🕐 最後更新
 
-- 時間：2026-07-22 16:03
+- 時間：2026-07-23 12:13
 - 更新者：Codex @ PC-YI-FY
-- Git push：✅ 已推（主要提交 `a7fb29e`）
+- Git push：✅ 已推（本次 Skill 安裝命名修正）

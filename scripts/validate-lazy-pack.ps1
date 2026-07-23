@@ -10,6 +10,7 @@ $LegacyUserSkillPathPatterns = @(
     '(?i)\.codex[\\/]skills(?![\\/]\.system(?=$|[\\/]|[^A-Za-z0-9._-]))',
     '(?i)dot_codex[\\/]skills'
 )
+$NumberedInstalledSkillPathPattern = '(?i)\.agents[\\/]skills[\\/]\d{2}-[a-z0-9-]+'
 
 function Add-Failure {
     param([Parameter(Mandatory)][string]$Message)
@@ -58,6 +59,10 @@ foreach ($File in $TextFiles) {
         Add-Failure "發現舊的使用者 Skill 路徑，請改用 ~/.agents/skills；~/.codex/skills/.system 僅供 Codex 隨附的系統 Skill：$Relative"
     }
 
+    if ($Content -match $NumberedInstalledSkillPathPattern) {
+        Add-Failure "全域 Skill 安裝路徑不可使用章節編號資料夾，請改用 frontmatter name：$Relative"
+    }
+
     if ($File.Extension -eq '.md') {
         foreach ($Match in [regex]::Matches($Content, '\[[^\]]*\]\((?<target>[^)]+\.md)(?:#[^)]*)?\)')) {
             $Target = $Match.Groups['target'].Value.Trim('<', '>')
@@ -73,7 +78,8 @@ foreach ($File in $TextFiles) {
     }
 }
 
-$SkillFiles = Get-ChildItem -LiteralPath (Join-Path $Root 'skills') -Recurse -File -Filter 'SKILL.md'
+$SkillsRoot = (Resolve-Path -LiteralPath (Join-Path $Root 'skills')).Path
+$SkillFiles = Get-ChildItem -LiteralPath $SkillsRoot -Recurse -File -Filter 'SKILL.md'
 $SkillNames = [System.Collections.Generic.List[string]]::new()
 foreach ($SkillFile in $SkillFiles) {
     $Content = Get-Content -Raw -Encoding utf8 -LiteralPath $SkillFile.FullName
@@ -96,6 +102,17 @@ foreach ($SkillFile in $SkillFiles) {
 
     $Name = $NameMatch.Groups['name'].Value
     $SkillNames.Add($Name)
+    if ($Name -notmatch '^codex-[a-z0-9-]+$') {
+        Add-Failure "懶人包 Skill name 必須使用 codex- 前綴：$Relative"
+    }
+
+    if (
+        $SkillFile.Directory.Parent.FullName -eq $SkillsRoot -and
+        $SkillFile.Directory.Name -notmatch '^\d{2}-[a-z0-9-]+$'
+    ) {
+        Add-Failure "repo 內的頂層 Skill 資料夾必須保留兩位數編號前綴：$Relative"
+    }
+
     $UiPath = Join-Path $SkillFile.DirectoryName 'agents/openai.yaml'
     if (Test-Path -LiteralPath $UiPath) {
         $Ui = Get-Content -Raw -Encoding utf8 -LiteralPath $UiPath
@@ -117,6 +134,21 @@ foreach ($AssetSkillFile in ($SkillFiles | Where-Object FullName -Match '[\\/]as
     Add-Failure "assets 內不可放置可被掃描的 SKILL.md，請改用範本檔名：$(Get-RepoRelativePath $AssetSkillFile.FullName)"
 }
 
+$InstallerEntryPath = Join-Path $Root 'SKILL.md'
+$InstallerEntry = Get-Content -Raw -Encoding utf8 -LiteralPath $InstallerEntryPath
+foreach ($SkillFile in $SkillFiles) {
+    $Content = Get-Content -Raw -Encoding utf8 -LiteralPath $SkillFile.FullName
+    $Name = [regex]::Match($Content, '(?m)^name:\s*["'']?(?<name>[a-z0-9-]+)').Groups['name'].Value
+    $SourcePath = 'skills/' + $SkillFile.Directory.Name
+    if (-not $InstallerEntry.Contains($SourcePath) -or -not $InstallerEntry.Contains($Name)) {
+        Add-Failure "安裝入口缺少來源資料夾與安裝名稱對照：$SourcePath -> $Name"
+    }
+}
+
+if ($InstallerEntry -notmatch '--agent\s+codex') {
+    Add-Failure "安裝入口必須明確指定 --agent codex"
+}
+
 if ($Failures.Count -gt 0) {
     Write-Host "Validation failed with $($Failures.Count) issue(s):" -ForegroundColor Red
     foreach ($Failure in $Failures) {
@@ -125,4 +157,4 @@ if ($Failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "Validation passed: chapter numbers, Markdown links, Skill metadata, user Skill paths, UTF-8 text, and Node.js LTS commands are valid." -ForegroundColor Green
+Write-Host "Validation passed: chapter numbers, Markdown links, numbered source folders, codex-prefixed install names, user Skill paths, UTF-8 text, and Node.js LTS commands are valid." -ForegroundColor Green
