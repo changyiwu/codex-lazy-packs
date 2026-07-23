@@ -52,15 +52,17 @@
 請讀取 repo 內容，列出所有可用的懶人包，問我要裝哪些。
 ```
 
-AI 會自動讀取 `SKILL.md`（安裝入口），列出 13 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 14。
+AI 會自動讀取 `SKILL.md`（安裝入口），列出 11 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 12。
 
 也可以直接安裝「環境建置」Skill：
 
 ```powershell
-npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -g -y
+npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth --agent codex -g -y
 ```
 
 > `--full-depth` 不可省略。只安裝 `codex-env-setup` 時，不會檢查 GitHub 帳號，也不會安裝 Git 或 GitHub CLI。
+>
+> repo 內仍以 `skills/00-env-setup/` 等編號資料夾維持章節順序；安裝器會依 frontmatter `name` 放到 `~/.agents/skills/codex-env-setup/`。若使用其他 GitHub Skill helper，必須逐項指定 `name=codex-env-setup`，不可讓來源資料夾名變成全域安裝名稱。
 
 ### 方式二：手動下載 MD 檔
 
@@ -113,7 +115,7 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\validate-lazy-pack.ps1
 ```
 
-此檢查會驗證章號沒有重複、相對 Markdown 連結有效、Skill frontmatter 完整、使用者全域 Skill 路徑統一為 `~/.agents/skills/`、沒有 Unicode 亂碼取代字元，以及 Windows Node.js 安裝指令都使用 LTS。GitHub Actions 也會在 push 與 pull request 自動執行同一份檢查。
+此檢查會驗證章號沒有重複、相對 Markdown 連結有效、repo 內的 Skill 資料夾保留編號前綴、安裝名稱統一為 `codex-*`、使用者全域 Skill 路徑統一為 `~/.agents/skills/`、沒有 Unicode 亂碼取代字元，以及 Windows Node.js 安裝指令都使用 LTS。GitHub Actions 也會在 push 與 pull request 自動執行同一份檢查。
 
 ---
 
