@@ -43,7 +43,6 @@ codex-lazy-packs/
 ├─ skills/                            # 可安裝技能（保留編號前綴）
 ├─ scripts/validate-lazy-pack.ps1     # 發布前驗證
 ├─ agents.md                          # 本檔：專案藍圖
-├─ CLAUDE.md
 ├─ handoff.md                         # 交接檔（每次收工必更新）
 ├─ .agents/  .github/  .gitignore
 └─ LICENSE
