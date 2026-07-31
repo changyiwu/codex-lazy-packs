@@ -22,7 +22,7 @@
 - [x] 階段二：11 個可安裝 Skills 通過 Skill Creator `quick_validate.py` 與發布驗證
 - [x] 階段三：修正 Skill 安裝命名——repo 內保留 `skills/00-env-setup` 編號資料夾，安裝到 `~/.agents/skills/` 時用 frontmatter 的 `codex-env-setup` 正式名稱
 - [x] 階段四：本機 7 個編號全域 Skill 資料夾原地改名為 `codex-*`，資料夾名與 frontmatter `name` 一致
-- [ ] 階段五：從 GitHub repo 重跑一次全域安裝，確認遠端版本落在 `~/.agents/skills/codex-*`
+- [x] 階段五：所有 Skill 統一從本地 repo 安裝，使用 `npx skills add .` 落在 `~/.agents/skills/codex-*`
 
 ## 資料夾結構
 
@@ -31,7 +31,7 @@ codex-lazy-packs/
 ├─ README.md                          # 使用者入口
 ├─ SKILL.md                           # 懶人包入口 Skill
 ├─ 00-環境建置.md
-├─ 01-連接-NotebookLM.md
+├─ 01-連接-Gemini-Notebook.md
 ├─ 02-Codex必裝Skills與Plugins.md
 ├─ 03-連接-GitHub.md
 ├─ 04-連接-Obsidian.md
@@ -66,7 +66,7 @@ codex-lazy-packs/
 - 修改主流程（例如某 MCP 換新版指令）時，平行的懶人包資料夾都要更新，改完 push 到各自的 GitHub repo
 - 修改教學章節或 Skill 後，先執行 `scripts/validate-lazy-pack.ps1`
 - repo 內的 Skill 資料夾**必須保留編號前綴**；只有全域安裝目的地使用 `codex-*`
-- 使用內建 GitHub skill-installer helper 時，**不能批次省略 `--name`**
+- 所有 Skill 必須從本地 repo 根目錄安裝；使用 `npx skills add .`，不要改用 GitHub URL 或 GitHub helper
 - 不要恢復已移除的第二大腦或 chezmoi 章節與 Skill
 
 ## 安全邊界
@@ -80,3 +80,4 @@ codex-lazy-packs/
 - 2026-07-22：移除第二大腦與 chezmoi 章節及對應 Skill，其餘章節與 Skill 重編為 #00–#09；專案工作筆記改用 Vault 內的專案資料夾路徑，發布驗證已通過。
 - 2026-07-23：修正 Skill 安裝命名流程（repo 內保留編號、全域安裝用 `codex-*`）。
 - 2026-07-24：專案藍圖改用標準範本格式（補上路線圖 checklist、資料夾結構與同步層級表）。
+- 2026-08-01：Skill 安裝來源統一改為本地 repo；產品文案、MCP repo 與本專案 Skill 更新為 Gemini Notebook，PyPI 套件與執行指令維持上游相容名稱。

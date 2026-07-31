@@ -43,26 +43,27 @@
 
 ## 使用方式
 
-### 方式一：直接叫 AI 幫你裝（最簡單）
+### 方式一：從本地 repo 安裝（最簡單）
 
-把這行貼給你的 AI agent：
+先在 Codex 開啟這個本地 repo 資料夾，再把這段貼給 AI agent：
 
 ```
-這是 Codex 懶人包全集 https://github.com/changyiwu/codex-lazy-packs
-請讀取 repo 內容，列出所有可用的懶人包，問我要裝哪些。
+這是 Codex 懶人包的本地 repo。
+請讀取目前資料夾的 SKILL.md，列出所有可用的懶人包，問我要安裝哪些；所有 Skill 都只能從目前本地 repo 安裝，不要改從 GitHub 下載。
 ```
 
-AI 會自動讀取 `SKILL.md`（安裝入口），列出 11 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 12。
+AI 會讀取本地 `SKILL.md`（安裝入口），列出 11 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 12。
 
 也可以直接安裝「環境建置」Skill：
 
 ```powershell
-npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth --agent codex -g -y
+Set-Location "<codex-lazy-packs 本地 repo 路徑>"
+npx skills add . --skill codex-env-setup --full-depth --agent codex -g -y
 ```
 
-> `--full-depth` 不可省略。只安裝 `codex-env-setup` 時，不會檢查 GitHub 帳號，也不會安裝 Git 或 GitHub CLI。
+> 指令必須在本地 repo 根目錄執行，而且 `--full-depth` 不可省略。只安裝 `codex-env-setup` 時，不會檢查 GitHub 帳號，也不會安裝 Git 或 GitHub CLI。
 >
-> repo 內仍以 `skills/00-env-setup/` 等編號資料夾維持章節順序；安裝器會依 frontmatter `name` 放到 `~/.agents/skills/codex-env-setup/`。若使用其他 GitHub Skill helper，必須逐項指定 `name=codex-env-setup`，不可讓來源資料夾名變成全域安裝名稱。
+> repo 內仍以 `skills/00-env-setup/` 等編號資料夾維持章節順序；本地安裝器會依 frontmatter `name` 放到 `~/.agents/skills/codex-env-setup/`。不可改用 GitHub URL 或 GitHub Skill helper 當安裝來源。
 
 ### 方式二：手動下載 MD 檔
 
@@ -86,7 +87,7 @@ npx skills add changyiwu/codex-lazy-packs --skill codex-env-setup --full-depth -
 | 編號 | 名稱 | 說明 |
 |------|------|------|
 | 00 | [環境建置](00-環境建置.md) | Codex Desktop、Node.js LTS、uv；Codex CLI 選用，不處理 GitHub |
-| 01 | [連接 NotebookLM](01-連接-NotebookLM.md) | NotebookLM MCP（Codex 版） |
+| 01 | [連接 Gemini Notebook](01-連接-Gemini-Notebook.md) | Gemini Notebook MCP（沿用 `notebooklm-*` 技術名稱） |
 | 02 | [初學者必裝外掛程式與技能](02-Codex必裝Skills與Plugins.md) | 基礎工具快篩、GitHub、Browser Use、Office 文件、生圖、官方文件與技能工具檢查 |
 | 03 | [連接 GitHub](03-連接-GitHub.md) | GitHub CLI、GitHub App 與 push 驗證 |
 | 04 | [連接 Obsidian](04-連接-Obsidian.md) | 確認 vault、設定全域 AGENTS.md，並用資料夾授權或 MCPVault 讀寫 |

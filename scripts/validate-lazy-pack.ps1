@@ -149,6 +149,22 @@ if ($InstallerEntry -notmatch '--agent\s+codex') {
     Add-Failure "安裝入口必須明確指定 --agent codex"
 }
 
+if ($InstallerEntry -notmatch 'npx\s+skills\s+add\s+\.\s+--skill') {
+    Add-Failure "安裝入口必須使用目前本地 repo：npx skills add . --skill ..."
+}
+
+$ReadmePath = Join-Path $Root 'README.md'
+$Readme = Get-Content -Raw -Encoding utf8 -LiteralPath $ReadmePath
+$RemoteInstallPattern = '(?i)npx(?:\.cmd)?\s+skills\s+add\s+(?:https?://\S+|[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)'
+foreach ($InstallDocument in @(
+    @{ Name = 'SKILL.md'; Content = $InstallerEntry },
+    @{ Name = 'README.md'; Content = $Readme }
+)) {
+    if ($InstallDocument.Content -match $RemoteInstallPattern) {
+        Add-Failure "Skill 安裝來源不可使用 GitHub 或其他遠端 repo：$($InstallDocument.Name)"
+    }
+}
+
 if ($Failures.Count -gt 0) {
     Write-Host "Validation failed with $($Failures.Count) issue(s):" -ForegroundColor Red
     foreach ($Failure in $Failures) {

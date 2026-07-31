@@ -10,7 +10,7 @@ description: 一次安裝所有 Codex 懶人包技能。說「全部安裝」「
 依序載入：
 
 1. codex-env-setup — 環境建置
-2. codex-notebooklm — NotebookLM
+2. codex-gemini-notebook — Gemini Notebook
 3. codex-essentials — 必裝 Skills
 4. codex-github — GitHub
 5. codex-obsidian — Obsidian
