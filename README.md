@@ -52,7 +52,7 @@
 請讀取目前資料夾的 SKILL.md，列出所有可用的懶人包，問我要安裝哪些；所有 Skill 都只能從目前本地 repo 安裝，不要改從 GitHub 下載。
 ```
 
-AI 會讀取本地 `SKILL.md`（安裝入口），列出 11 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 12。
+AI 會讀取本地 `SKILL.md`（安裝入口），列出 7 個可直接安裝的技能，讓你選擇後自動安裝。使用 `--full-depth --list` 時，CLI 另外還會顯示根入口 `codex-lazy-packs`，因此畫面總數是 8。
 
 也可以直接安裝「環境建置」Skill：
 

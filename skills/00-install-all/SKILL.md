@@ -11,13 +11,9 @@ description: 一次安裝所有 Codex 懶人包技能。說「全部安裝」「
 
 1. codex-env-setup — 環境建置
 2. codex-gemini-notebook — Gemini Notebook
-3. codex-essentials — 必裝 Skills
-4. codex-github — GitHub
-5. codex-obsidian — Obsidian
-6. codex-supabase — Supabase
-7. codex-firebase — Firebase
-8. codex-ollama — Ollama
-9. codex-gemini — Gemini
-10. codex-draw — 生圖
+3. codex-github — GitHub
+4. codex-obsidian — Obsidian
+5. codex-firebase — Firebase
+6. codex-draw — 生圖
 
-每完成一個報告進度，最終總表：10 項各別狀態。
+每完成一個報告進度，最終總表：6 項各別狀態。

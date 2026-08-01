@@ -13,19 +13,15 @@ description: Codex 懶人包全集 — 環境建置、Gemini Notebook 等 MCP �
 |------|-----------------|-------------------|------|
 | 00 | `skills/00-env-setup` | `codex-env-setup` | Codex Desktop、Node.js LTS、uv；CLI 選用，不處理 GitHub |
 | 01 | `skills/01-gemini-notebook` | `codex-gemini-notebook` | 連接 Gemini Notebook MCP |
-| 02 | `skills/02-essentials` | `codex-essentials` | 初學者必裝 Skills 與 Plugins |
-| 03 | `skills/03-github` | `codex-github` | 連接 GitHub CLI |
-| 04 | `skills/04-obsidian` | `codex-obsidian` | 連接 Obsidian（資料夾授權 / MCPVault） |
-| 05 | `skills/05-supabase` | `codex-supabase` | 連接 Supabase |
-| 06 | `skills/06-firebase` | `codex-firebase` | 連接 Firebase |
-| 07 | `skills/07-ollama` | `codex-ollama` | 本地 AI Ollama |
-| 08 | `skills/08-gemini` | `codex-gemini` | Gemini 免費 API |
-| 09 | `skills/09-draw` | `codex-draw` | 生圖指引（內建 + API） |
-| 10 | `skills/00-install-all` | `codex-install-all` | 一次安裝全部 |
+| 02 | `skills/02-github` | `codex-github` | 連接 GitHub CLI |
+| 03 | `skills/03-obsidian` | `codex-obsidian` | 連接 Obsidian（資料夾授權 / MCPVault） |
+| 04 | `skills/04-firebase` | `codex-firebase` | 連接 Firebase |
+| 05 | `skills/05-draw` | `codex-draw` | 生圖指引（內建 + API） |
+| 06 | `skills/00-install-all` | `codex-install-all` | 一次安裝全部 |
 
 ## 步驟二：讓使用者選擇
 
-問：「你要安裝哪些？輸入全部或編號組合（例如 00, 01, 03, 04）。」
+問：「你要安裝哪些？輸入全部或編號組合（例如 00, 01, 02, 03）。」
 
 將編號轉成上表的完整 Skill 名稱。若使用者只選 00，不得順便執行 GitHub 安裝或帳號檢查。
 
@@ -52,7 +48,7 @@ repo 內的編號資料夾只用來維持教學順序，不能當成全域安裝
 ```text
 ~/.agents/skills/codex-env-setup/SKILL.md
 ~/.agents/skills/codex-gemini-notebook/SKILL.md
-~/.agents/skills/codex-essentials/SKILL.md
+~/.agents/skills/codex-github/SKILL.md
 ```
 
 其餘項目依上表的「安裝後 Skill 名稱」類推。`npx skills add` 會依 `SKILL.md` frontmatter 的 `name` 建立正確資料夾。
