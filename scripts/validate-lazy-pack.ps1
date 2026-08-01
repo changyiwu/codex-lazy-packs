@@ -36,6 +36,17 @@ foreach ($Group in $DuplicateNumbers) {
     Add-Failure "章號重複：$($Group.Name) -> $($Group.Group.Name -join ', ')"
 }
 
+$ExpectedChapterNumbers = @('00', '01', '02', '03', '04', '05')
+$ActualChapterNumbers = @(
+    $ChapterFiles |
+        ForEach-Object { [regex]::Match($_.Name, '^(\d+(?:\.\d+)?)-').Groups[1].Value } |
+        Sort-Object
+)
+
+if (($ActualChapterNumbers -join ',') -ne ($ExpectedChapterNumbers -join ',')) {
+    Add-Failure "教學章節必須連續為 #00–#05，實際為：$($ActualChapterNumbers -join ', ')"
+}
+
 $TextExtensions = @('.md', '.yaml', '.yml', '.toml', '.ps1')
 $TextFiles = Get-ChildItem -LiteralPath $Root -Recurse -File |
     Where-Object {
@@ -79,6 +90,18 @@ foreach ($File in $TextFiles) {
 }
 
 $SkillsRoot = (Resolve-Path -LiteralPath (Join-Path $Root 'skills')).Path
+$FeatureSkillDirectories = Get-ChildItem -LiteralPath $SkillsRoot -Directory |
+    Where-Object Name -ne '00-install-all'
+$FeatureSkillNumbers = @(
+    $FeatureSkillDirectories |
+        ForEach-Object { [regex]::Match($_.Name, '^(\d{2})-').Groups[1].Value } |
+        Sort-Object
+)
+
+if (($FeatureSkillNumbers -join ',') -ne ($ActualChapterNumbers -join ',')) {
+    Add-Failure "教學章節與功能 Skill 編號必須一致；章節：$($ActualChapterNumbers -join ', ')；Skill：$($FeatureSkillNumbers -join ', ')"
+}
+
 $SkillFiles = Get-ChildItem -LiteralPath $SkillsRoot -Recurse -File -Filter 'SKILL.md'
 $SkillNames = [System.Collections.Generic.List[string]]::new()
 foreach ($SkillFile in $SkillFiles) {

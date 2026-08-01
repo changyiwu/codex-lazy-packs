@@ -1,4 +1,4 @@
-# Codex 懶人包 #04：連接 Obsidian
+# Codex 懶人包 #03：連接 Obsidian
 
 > 版本：v1.0（Codex Desktop / IDE / CLI）
 > 更新日期：2026-07-14

@@ -18,12 +18,12 @@
 
 ## 目標與路線圖
 
-- [x] 階段一：教學章節成形，移除第二大腦與 chezmoi 章節後重編為 #00–#09（共 10 章）
+- [x] 階段一：教學章節縮減並重編為 #00–#05（共 6 章）
 - [x] 階段二：原有 11 個可安裝 Skills 通過 Skill Creator `quick_validate.py` 與發布驗證
 - [x] 階段三：修正 Skill 安裝命名——repo 內保留 `skills/00-env-setup` 編號資料夾，安裝到 `~/.agents/skills/` 時用 frontmatter 的 `codex-env-setup` 正式名稱
 - [x] 階段四：本機 7 個編號全域 Skill 資料夾原地改名為 `codex-*`，資料夾名與 frontmatter `name` 一致
 - [x] 階段五：所有 Skill 統一從本地 repo 安裝，使用 `npx skills add .` 落在 `~/.agents/skills/codex-*`
-- [x] 階段六：移除 Essentials、Supabase、Ollama、Gemini API 四個 Skill，其餘 Skill 重編為 #00–#05；保留原教學章節
+- [x] 階段六：移除 Essentials、Supabase、Ollama、Gemini API 四個 Skill 及對應教學章節，其餘文章與 Skill 對齊重編為 #00–#05
 
 ## 資料夾結構
 
@@ -33,14 +33,10 @@ codex-lazy-packs/
 ├─ SKILL.md                           # 懶人包入口 Skill
 ├─ 00-環境建置.md
 ├─ 01-連接-Gemini-Notebook.md
-├─ 02-Codex必裝Skills與Plugins.md
-├─ 03-連接-GitHub.md
-├─ 04-連接-Obsidian.md
-├─ 05-連接-Supabase-資料庫.md
-├─ 06-連接-Firebase-資料庫.md
-├─ 07-安裝本地AI-Ollama.md
-├─ 08-設定Gemini免費API.md
-├─ 09-用Image Gen Skill在Codex生圖.md
+├─ 02-連接-GitHub.md
+├─ 03-連接-Obsidian.md
+├─ 04-連接-Firebase-資料庫.md
+├─ 05-用Image Gen Skill在Codex生圖.md
 ├─ skills/                            # 可安裝技能（保留編號前綴）
 ├─ scripts/validate-lazy-pack.ps1     # 發布前驗證
 ├─ agents.md                          # 本檔：專案藍圖
@@ -82,4 +78,4 @@ codex-lazy-packs/
 - 2026-07-23：修正 Skill 安裝命名流程（repo 內保留編號、全域安裝用 `codex-*`）。
 - 2026-07-24：專案藍圖改用標準範本格式（補上路線圖 checklist、資料夾結構與同步層級表）。
 - 2026-08-01：Skill 安裝來源統一改為本地 repo；產品文案、MCP repo 與本專案 Skill 更新為 Gemini Notebook，PyPI 套件與執行指令維持上游相容名稱。
-- 2026-08-02：移除 Essentials、Supabase、Ollama、Gemini API 四個 Skill，保留對應教學章節；其餘 Skill 重編為 #00–#05，可直接安裝 Skill 總數改為 7（含一次安裝全部）。
+- 2026-08-02：移除 Essentials、Supabase、Ollama、Gemini API 四個 Skill 及對應教學章節；其餘文章與 Skill 對齊重編為 #00–#05，可直接安裝 Skill 總數為 7（含一次安裝全部）。使用者已自行刪除全域 `codex-essentials`。
