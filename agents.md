@@ -76,7 +76,8 @@ codex-lazy-packs/
 - 修改教學章節或 Skill 後，先執行 `scripts/validate-lazy-pack.ps1`
 - repo 內的 Skill 資料夾**必須保留編號前綴**；只有全域安裝目的地使用 `codex-*`
 - 所有 Skill 必須從本地 repo 根目錄安裝；使用 `npx skills add .`，不要改用 GitHub URL 或 GitHub helper
-- 不要恢復已移除的第二大腦或 chezmoi 章節與 Skill
+- 不要恢復已移除的第二大腦或 chezmoi 章節與 Skill；已刪除的四個 Skill、對應教學章節與全域 `codex-essentials` 同樣**不應恢復**
+- **`notebooklm-mcp-cli`、`notebooklm-mcp`、`nlm` 仍是上游有效的技術名稱**，不可只因產品品牌改名就自行替換
 
 ## 安全邊界
 
