@@ -67,25 +67,22 @@ Codex 會把它當成圖片編輯或再生成任務處理。
 
 若已安裝，Codex 應該能看到類似：
 
-```text
-C:\Users\<你>\.codex\skills\.system\imagegen\SKILL.md
-```
+- Windows：`C:\Users\<你>\.codex\skills\.system\imagegen\SKILL.md`
+- macOS / Linux：`~/.codex/skills/.system/imagegen/SKILL.md`
 
-這是 Codex 隨附的系統 Skill 路徑。自己安裝、所有專案都要使用的全域 Skill，應放在 `C:\Users\<你>\.agents\skills\<skill-name>\`；不要放進 `.system`。
+這是 Codex 隨附的系統 Skill 路徑。自己安裝、所有專案都要使用的全域 Skill，應放在 `C:\Users\<你>\.agents\skills\<skill-name>\`（macOS / Linux 是 `~/.agents/skills/<skill-name>/`）；不要放進 `.system`。
 
 ### 圖片會存在哪裡？
 
 Codex 內建生圖預設會存在：
 
-```text
-C:\Users\<你>\.codex\generated_images\
-```
+- Windows：`C:\Users\<你>\.codex\generated_images\`
+- macOS / Linux：`~/.codex/generated_images/`
 
 實際檔案通常還會多一層工作識別碼，例如：
 
-```text
-C:\Users\<你>\.codex\generated_images\<工作識別碼>\<圖片檔名>.png
-```
+- Windows：`C:\Users\<你>\.codex\generated_images\<工作識別碼>\<圖片檔名>.png`
+- macOS / Linux：`~/.codex/generated_images/<工作識別碼>/<圖片檔名>.png`
 
 生圖工具完成時會顯示完整路徑。如果介面只顯示圖片、沒有看到路徑，可以再問：
 

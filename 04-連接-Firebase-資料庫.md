@@ -154,10 +154,24 @@ Demo 結束後，把規則還原為預設拒絕，再次確認後部署。不要
 
 **方法 B：手動編輯 `~/.codex/config.toml`**
 
+**Windows**：
+
 ```toml
 [mcp_servers.firebase]
 command = "npx.cmd"
 cwd = 'C:\Users\<你>\.codex\firebase-projects\<專案 ID>'
+args = ["-y", "firebase-tools@latest", "mcp"]
+startup_timeout_sec = 60
+tool_timeout_sec = 120
+default_tools_approval_mode = "writes"
+```
+
+**macOS / Linux**
+
+```toml
+[mcp_servers.firebase]
+command = "npx"
+cwd = '/Users/<你>/.codex/firebase-projects/<專案 ID>'
 args = ["-y", "firebase-tools@latest", "mcp"]
 startup_timeout_sec = 60
 tool_timeout_sec = 120

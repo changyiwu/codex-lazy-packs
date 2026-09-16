@@ -128,10 +128,19 @@ git config --global user.email "你的email@example.com"
 
 先確認 repo 名稱與可見性。以下以私人 repo `codex-github-test` 為例：
 
+**Windows（PowerShell）**
+
 ```powershell
 $testRoot = Join-Path $env:USERPROFILE "Documents\codex-github-test"
 New-Item -ItemType Directory -Path $testRoot -Force
 Set-Location $testRoot
+git init -b main
+```
+
+**macOS / Linux**
+
+```bash
+mkdir -p ~/Documents/codex-github-test && cd ~/Documents/codex-github-test
 git init -b main
 ```
 
