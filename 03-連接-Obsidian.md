@@ -43,12 +43,13 @@
 
 常見位置：
 
-| 同步方式 | 常見路徑 |
-|---|---|
-| OneDrive | `C:\Users\<你>\OneDrive\文件\<Vault名稱>` |
-| Google Drive | `G:\我的雲端硬碟\<Vault名稱>` |
-| Obsidian Sync | 使用者選擇的本機資料夾 |
-| 本機文件 | `C:\Users\<你>\Documents\<Vault名稱>` |
+| 同步方式 | Windows 常見路徑 | macOS 常見路徑 |
+|---|---|---|
+| OneDrive | `C:\Users\<你>\OneDrive\文件\<Vault名稱>` | `~/Library/CloudStorage/OneDrive-Personal/文件/<Vault名稱>` |
+| Google Drive | `G:\我的雲端硬碟\<Vault名稱>` | `~/Library/CloudStorage/GoogleDrive-<你的信箱>/My Drive/<Vault名稱>` |
+| Obsidian Sync | 使用者選擇的本機資料夾 | 使用者選擇的本機資料夾 |
+| 本機文件 | `C:\Users\<你>\Documents\<Vault名稱>` | `~/Documents/<Vault名稱>` |
+| iCloud Drive | （不適用） | `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/<Vault名稱>` |
 
 Windows 可以在使用者指定的範圍內搜尋 `.obsidian`：
 
@@ -70,6 +71,19 @@ $roots |
   }
 ```
 
+macOS / Linux 的對應寫法：
+
+```bash
+for root in ~/Library/CloudStorage ~/Library/"Mobile Documents" ~/Documents ~/Desktop ~/OneDrive; do
+  [ -d "$root" ] || continue
+  find "$root" -maxdepth 5 -type d -name .obsidian 2>/dev/null |
+    while read -r d; do dirname "$d"; done
+done
+```
+
+> macOS 的 Google Drive 掛在 `~/Library/CloudStorage/` 底下，iCloud 的 vault 在
+> `~/Library/Mobile Documents/`，兩處都要搜才找得齊。
+
 確認條件：
 
 - 資料夾存在
@@ -84,10 +98,8 @@ $roots |
 
 Codex 的全域指令檔預設位於：
 
-```text
-Windows：C:\Users\<你>\.codex\AGENTS.md
-macOS / Linux：~/.codex/AGENTS.md
-```
+- Windows：`C:\Users\<你>\.codex\AGENTS.md`
+- macOS / Linux：`~/.codex/AGENTS.md`
 
 先讀取既有內容，再合併以下區塊：
 
@@ -141,30 +153,64 @@ Codex Desktop、CLI 與 IDE 擴充可以共用同一份本機 MCP 設定。個�
 
 ### B-1. 檢查 Node.js
 
+**Windows（PowerShell）**
+
 ```powershell
 node --version
 npm.cmd --version
 ```
 
+**macOS / Linux**
+
+```bash
+node --version
+npm --version
+```
+
 若沒有 Node.js，詢問後安裝 LTS：
+
+**Windows（PowerShell）**
 
 ```powershell
 winget install --id OpenJS.NodeJS.LTS --exact
+```
+
+**macOS / Linux**
+
+```bash
+brew install node
 ```
 
 ### B-2. 安裝 MCPVault
 
 詢問後執行：
 
+**Windows（PowerShell）**
+
 ```powershell
 npm.cmd install -g @bitbonsai/mcpvault
 ```
 
+**macOS / Linux**
+
+```bash
+npm install -g @bitbonsai/mcpvault
+```
+
 找出執行檔：
+
+**Windows（PowerShell）**
 
 ```powershell
 where.exe mcpvault
 npm.cmd prefix -g
+```
+
+**macOS / Linux**
+
+```bash
+which mcpvault
+npm prefix -g
 ```
 
 Windows 常見位置：
@@ -172,6 +218,15 @@ Windows 常見位置：
 ```text
 C:\Users\<你>\AppData\Roaming\npm\mcpvault.cmd
 ```
+
+macOS / Linux 常見位置：
+
+```text
+/usr/local/bin/mcpvault
+~/.npm-global/bin/mcpvault
+```
+
+> macOS / Linux 的 MCP 設定直接寫 `mcpvault` 即可，不必填完整路徑。
 
 ### B-3. 加入 Codex MCP 設定
 
@@ -191,12 +246,30 @@ startup_timeout_sec = 20
 tool_timeout_sec = 60
 ```
 
+macOS / Linux TOML 範例：
+
+```toml
+[mcp_servers.obsidian]
+command = "mcpvault"
+args = ["<VAULT_PATH>"]
+startup_timeout_sec = 20
+tool_timeout_sec = 60
+```
+
 手動修改時只新增或更新 `[mcp_servers.obsidian]`，不要覆蓋其他 server。Windows TOML 路徑中的反斜線要寫成 `\\`。
 
 CLI 形式：
 
+**Windows（PowerShell）**
+
 ```powershell
 codex mcp add obsidian -- "C:\Users\<你>\AppData\Roaming\npm\mcpvault.cmd" "<VAULT_PATH>"
+```
+
+**macOS / Linux**
+
+```bash
+codex mcp add obsidian -- mcpvault "<VAULT_PATH>"
 ```
 
 ### B-4. 重啟並驗證
